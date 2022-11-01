@@ -85,8 +85,8 @@ export default function UserList() {
     try {
       if (!accountItem) return;
       const res = await authApi.deleteUser(accountItem._id);
-      if (res.success === true) {
-        alert("Delete product successfully");
+      if (res) {
+        alert("Delete account successfully");
         getListAcc();
       }
       setModalConfirm(false);

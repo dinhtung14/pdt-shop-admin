@@ -37,7 +37,6 @@ function ProductCategory() {
     }, [getAllProducts]);
 
     const handleChangePage = (e, page) => {
-        console.log(page);
         setPagination(prev => ({
             ...prev,
             page: page

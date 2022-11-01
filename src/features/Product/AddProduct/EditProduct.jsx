@@ -34,7 +34,7 @@ export default function EditProduct() {
   });
   const [loading, setLoading] = useState(false);
   const [listCategory, setListCategory] = useState([]);
-  const { control, handleSubmit, reset } = useForm({
+  const { control, handleSubmit } = useForm({
     defaultValues: initialValues,
     mode: "all",
     resolver: yupResolver(validationSchema),

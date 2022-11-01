@@ -1,15 +1,10 @@
-import { AttachMoney, Logout, Person, Settings, Shop, Warning } from "@mui/icons-material";
+import { Logout, Person, Settings, Shop, Warning } from "@mui/icons-material";
 
 export const user_menu = [
     {
         icon: <Settings />,
         content: "Profile",
         route: "/profile"
-    },
-    {
-        icon: <AttachMoney />,
-        content: "Orders",
-        route: "/orders"
     },
     {
         icon: <Logout />,

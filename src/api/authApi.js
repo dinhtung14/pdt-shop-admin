@@ -5,6 +5,9 @@ const authApi = {
     confirm: () => {
         return axiosClient.get(ENDPOINT.auth.confirm);
     },
+    register: (data) => {
+        return axiosClient.post(ENDPOINT.auth.register, data);
+    },
     getAccessToken: (data) => {
         return axiosClient.post(ENDPOINT.auth.getAccessToken, data);
     },
@@ -18,6 +21,9 @@ const authApi = {
     deleteUser: (id) => {
         const url = `/user/${id}`;
         return axiosClient.delete(url);
+    },
+    getInfo: () => {
+        return axiosClient.get(ENDPOINT.auth.updateInfo);
     }
 }
 

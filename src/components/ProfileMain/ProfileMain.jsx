@@ -3,15 +3,32 @@ import './profile.scss'
 import avatar from 'assets/image/avatar.jpg'
 import { FacebookOutlined, Google } from '@mui/icons-material'
 import { Table, TableBody, TableCell, TableRow } from '@mui/material'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import authApi from 'api/authApi'
 
 export default function ProfileMain() {
+    const [user, setUser] = useState();
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const res = await authApi.getInfo();
+                setUser(res.user);
+            } catch (error) {
+                return;
+            }
+        }
+        getUser();
+    }, [])
+    
     return (
         <div className="row profile-container">
             <div className="col-4 col-md-12 profile-container__left">
                 <div className="profile-container__left__top">
                     <img src={avatar} alt="" />
-                    <h4>Minh Phuong</h4>
-                    <p>minmin@gmail.com</p>
+                    <h4>{user?.username}</h4>
+                    <p>{user?.email}</p>
                     <div className="user-social">
                         <FacebookOutlined className="fb-icon"/>
                         <Google className="gg-icon"/>
@@ -47,27 +64,19 @@ export default function ProfileMain() {
                         <TableBody>
                             <TableRow>
                                 <TableCell>Fullname: </TableCell>
-                                <TableCell>Minh Phuong</TableCell>
+                                <TableCell>{user.fullname ? user.fullname : "-"}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Email: </TableCell>
-                                <TableCell>minmin@gmail.com</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>Gender: </TableCell>
-                                <TableCell>Female</TableCell>
+                                <TableCell>{user.email ? user.email : "-"}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Phone number: </TableCell>
-                                <TableCell>0123456789</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>Date of birth: </TableCell>
-                                <TableCell>Jun, 16 2001</TableCell>
+                                <TableCell>{user.phoneNumber ? user.phoneNumber : "-"}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Address: </TableCell>
-                                <TableCell>Ha noi</TableCell>
+                                <TableCell>{user.address ? user.address : "-"}</TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>

@@ -31,7 +31,6 @@ export default function Orders() {
     }, [getListOrder])
 
     const handleChangePage = (e, page) => {
-        console.log(page);
         setPagination(prev => ({
             ...prev,
             page: page

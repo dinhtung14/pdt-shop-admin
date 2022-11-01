@@ -1,7 +1,4 @@
-import {
-    Home, OpenInNew, AttachMoney, CameraAlt, PersonAdd, BarChartSharp,
-    AutoAwesomeMosaic, Settings, Login
-} from '@mui/icons-material'
+import { Home, OpenInNew, AttachMoney, PersonAdd, Settings, Logout } from '@mui/icons-material'
 
 const sidebar_item = [
     {
@@ -44,32 +41,21 @@ const sidebar_item = [
             }
         ]
     },
-    {
-        displayName: 'Categories',
-        route: '/categories',
-        icon: <AutoAwesomeMosaic />
-    },
-    {
-        displayName: 'Media',
-        route: '/media',
-        icon: <CameraAlt />
-    },
-    {
-        displayName: 'Report',
-        route: '/report',
-        icon: <BarChartSharp />
-    },
+    // {
+    //     displayName: 'Categories',
+    //     route: '/categories',
+    //     icon: <AutoAwesomeMosaic />
+    // },
     {
         displayName: 'Profile',
         route: '/profile',
         icon: <Settings />
     },
     {
-        displayName: 'Login',
+        displayName: 'Logout',
         route: '/login',
-        icon: <Login />
+        icon: <Logout />
     },
-
 ]
 
 export default sidebar_item;
