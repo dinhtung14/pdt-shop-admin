@@ -9,9 +9,10 @@ import productApi from "api/productApi";
 import { useEffect } from "react";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 export default function EditProduct() {
+  const history = useHistory();
 	const location = useLocation();
 	const productItem = location.state;
   const initialValues = {
@@ -57,7 +58,8 @@ export default function EditProduct() {
 			setLoading(true);
 			const res = await productApi.update(productItem._id, data);
 			if (res.success === true) {
-				alert("Update product successfully!");
+        alert("Update product successfully!");
+        history.push("list-product")
 			}
 			setLoading(false)
     } catch (error) {

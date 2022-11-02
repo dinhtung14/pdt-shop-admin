@@ -24,6 +24,9 @@ const authApi = {
     },
     getInfo: () => {
         return axiosClient.get(ENDPOINT.auth.updateInfo);
+    },
+    updateInformation: (data) => {
+        return axiosClient.put(ENDPOINT.auth.updateInfo, data);
     }
 }
 

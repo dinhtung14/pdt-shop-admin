@@ -94,6 +94,17 @@
         &__main {
             margin-top: 20px;
         }
+        .btn-add {
+            width: 200px;
+            padding: 10px 15px;
+            background-color: var(--main-color);
+            color: var(--text-white);
+            text-transform: uppercase;
+            margin: 30px auto;
+            text-align: center;
+            float: right;
+            cursor: pointer;
+        }
     }
 }
 

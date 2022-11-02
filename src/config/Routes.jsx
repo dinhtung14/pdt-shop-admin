@@ -6,8 +6,9 @@ import Profile from 'pages/Profile'
 import Users from 'pages/Users'
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import ProtectedRoute from 'routes/ProtectedRoute'
 
-export default function Routes() {
+function Routes() {
     return (
         <Switch>
             <Route path="/" exact component={Dashboard} />
@@ -19,3 +20,6 @@ export default function Routes() {
         </Switch>
     )
 }
+
+
+export default ProtectedRoute(Routes);
