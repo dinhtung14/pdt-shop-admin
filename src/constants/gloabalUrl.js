@@ -15,20 +15,24 @@ export const LOCAL_STORAGE = {
 
 export const ORDER_STATUS = [
     {
-        value: "Chờ xác nhận",
-        name: "Chờ xác nhận"
+        value: "1",
+        name: "Wait for confirmation"
     },
     {
-        value: "đang giao",
-        name: "Đang giao"
+        value: "2",
+        name: "Confirmed"
     },
     {
-        value: "Giao hàng thành công",
-        name: "Giao hàng thành công"
+        value: "3",
+        name: "Delivering"
     },
     {
-        value: "Hủy",
-        name: "Hủy"
+        value: "4",
+        name: "Delivered"
+    },
+    {
+        value: "0",
+        name: "Cancel"
     },
 
 ]

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './addProduct.scss'
 import { Box, CircularProgress } from '@mui/material';
 import UploadImage from 'components/UploadImage/UploadImage';
@@ -7,11 +7,12 @@ import { useForm } from 'react-hook-form';
 import { SelectField } from 'components/FormField/SelectField';
 import { useState } from 'react';
 import productApi from 'api/productApi';
-import { useEffect } from 'react';
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useHistory } from 'react-router-dom'
 
 export default function AddProduct() {
+    const history = useHistory();
     const initialValues = {
         discount: 0,
         evaluation: 0,
@@ -92,6 +93,7 @@ export default function AddProduct() {
             const res = await productApi.create(formData);
             if (res.success === true ) {
                 alert("Add product successfully!");
+                history.push('/products/list-product');
             }
             setLoading(false);
             reset(initialValues);

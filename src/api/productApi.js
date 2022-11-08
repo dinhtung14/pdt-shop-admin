@@ -1,8 +1,8 @@
 import axiosClient from './axiosClient';
 
 const productApi = {
-	getAll: ({ page, limit }) => {
-		const url = `/product?page=${page}&limit=${limit}`;
+	getAll: ({ page, limit , name}) => {
+		const url = `/product?page=${page}&limit=${limit}&name=${name}`;
 		return axiosClient.get(url);
 	},
 	getAllCate: () => {
@@ -20,6 +20,10 @@ const productApi = {
 	update: (id, data) => {
 		const url = `/product/${id}`;
 		return axiosClient.put(url, data);
+	},
+	searchByCategory: (categoryId) => {
+		const url = `/product?category_id=${categoryId}`;
+		return axiosClient.get(url);
 	}
 }
 

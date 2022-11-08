@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import {
   CircularProgress,
-  FormControl,
-  MenuItem,
-  Select,
   Table,
   TableBody,
   TableCell,
@@ -15,6 +12,7 @@ import "./orderList.scss";
 import { ORDER_STATUS } from "constants/gloabalUrl";
 import { useEffect } from "react";
 import orderApi from "api/orderApi";
+import EditForm from "components/EditForm/EditForm";
 
 export default function OrderList({ listOrder, loading }) {
   const [orders, setOrders] = useState([]);
@@ -23,30 +21,47 @@ export default function OrderList({ listOrder, loading }) {
     setOrders([...listOrder]);
   }, [listOrder]);
 
-  const getStatus = (status) => {
-    let color = 'orange';
+  const getColorStatus = (status) => {
+    let bgc = '';
     switch (status) {
-      case "Hủy":
-        return color = 'red';
-      case "đang giao":
-        return color = 'green';
-      case "Đang giao":
-        return color = 'green';
-      case "Giao hàng thành công":
-        return color = "orange";
-      case "Chờ xác nhận":
-        return color = "yellow";
+      case "0":
+        return bgc = 'red';
+      case "4":
+        return bgc = 'green';
+      case "3":
+        return bgc = "#d35400";
+      case "1":
+        return bgc = "#fbc531";
+      case "2":
+        return bgc = '#34ace0';
       default:
-        color = 'black';
         break;
     }
   }
 
-  const handleChangeStatus = async (e, index) => {
+  const getStatus = (status) => {
+    let content = '';
+    switch (status) {
+      case "0":
+        return content = 'Cancel';
+      case "3":
+        return content = 'Delivering';
+      case "4":
+        return content = "Delivered";
+      case "1":
+        return content = "Wait for confirmation";
+      case "2":
+        return content = 'Confirmed';
+      default:
+        break;
+    }
+  }
+
+  const handleChangeStatus = async (index, value) => {
     let orderItem;
     setOrders((prev) => {
       const prevValue = [...prev]
-      const newValue = { ...prevValue[index], status: e.target.value }
+      const newValue = { ...prevValue[index], status: value }
       prevValue[index] = newValue;
       orderItem = newValue;
       return prevValue;
@@ -115,29 +130,24 @@ export default function OrderList({ listOrder, loading }) {
                       <TableCell>{item?.phoneNumber}</TableCell>
                       <TableCell style={{ color: 'red' }}>${item?.totalAmount}</TableCell>
                       <TableCell>{item?.user?.fullname}</TableCell>
-                      <TableCell
-                        sx={{ color: getStatus(item.status) }}
-                      >
-                        <FormControl
-                          margin="normal"
-                          variant="outlined"
-                          size="small"
-                        >
-                          <Select
-                            defaultValue={item.status}
-                            value={item.status}
-                            onChange={(e) => handleChangeStatus(e, index)}
-                            style={{ width: 180 }}
-                          >
-                            {ORDER_STATUS.map((option) => {
-                              return (
-                                <MenuItem key={option.value} value={option.value}>
-                                  {option.name}
-                                </MenuItem>
-                              );
-                            })}
-                          </Select>
-                        </FormControl>
+                      <TableCell>
+                        <EditForm
+                          index={index}
+                          name='status'
+                          value={item.status}
+                          setValue={handleChangeStatus}
+                          status={getStatus(item.status)}
+                          options={ORDER_STATUS}
+                          styles={{
+                            backgroundColor: getColorStatus(item.status),
+                            color: "#fff",
+                            textAlign: "center",
+                            borderRadius: 5,
+                            padding: "3px 8px",
+                            display: "inline-block",
+                            fontSize: "12px"
+                          }}
+                        />
                       </TableCell>
                     </TableRow>
                   );
