@@ -118,6 +118,7 @@ function ProductCategory() {
                 <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Price</TableCell>
+                <TableCell>Quantity</TableCell>
                 <TableCell>Discount(%)</TableCell>
                 <TableCell>Sold</TableCell>
                 <TableCell>Category</TableCell>
@@ -137,6 +138,7 @@ function ProductCategory() {
                     </TableCell>
                     <TableCell>{item.name}</TableCell>
                     <TableCell>{item.price}</TableCell>
+                    <TableCell>{item?.quantity ? item.quantity : 0}</TableCell>
                     <TableCell>{item.discount}</TableCell>
                     <TableCell>{item.sold}</TableCell>
                     <TableCell>{item.category.name}</TableCell>

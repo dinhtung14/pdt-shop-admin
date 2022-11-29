@@ -22,6 +22,7 @@ export default function EditProduct() {
     sold: productItem.sold ? productItem.sold : 0,
     name: productItem.name ? productItem.name : "",
     price: productItem.price ? productItem.price : 0,
+    quantity: productItem.quantity ? productItem.quantity : 0,
     category: productItem.category._id ? productItem.category._id : "",
   };
   const validationSchema = Yup.object().shape({
@@ -93,6 +94,17 @@ export default function EditProduct() {
                 name="price"
                 type="number"
                 label="Price"
+                control={control}
+              />
+            </div>
+            <div className="left-item">
+              <p>
+                Quantity <span>*</span>
+              </p>
+              <InputField
+                name="quantity"
+                type="number"
+                label="Quantity"
                 control={control}
               />
             </div>

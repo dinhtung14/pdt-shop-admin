@@ -20,6 +20,7 @@ export default function AddProduct() {
         sold: 0,
         name: '',
         price: 0,
+        quantity: 0,
         category: ''
     }
     const validationSchema = Yup.object().shape({
@@ -28,6 +29,9 @@ export default function AddProduct() {
             .min(0, "Minimum is 0"),
         price: Yup.number()
             .required("Price is required")
+            .min(1, "Minimum is 1"),
+        quantity: Yup.number()
+            .required("Quantity is required")
             .min(1, "Minimum is 1"),
         category: Yup.string()
             .required("Category is required"),
@@ -130,6 +134,15 @@ export default function AddProduct() {
                                 name="price"
                                 type="number"
                                 label="Price"
+                                control={control}
+                            />
+                        </div>
+                        <div className="left-item">
+                            <p>Quantity <span>*</span></p>
+                            <InputField 
+                                name="quantity"
+                                type="number"
+                                label="Quantity"
                                 control={control}
                             />
                         </div>
