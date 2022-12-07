@@ -89,7 +89,6 @@ export default function OrderList({ listOrder, loading }) {
             <Table>
               <TableHead>
                 <TableRow style={{ backgroundColor: "#95afc0" }}>
-                  <TableCell>ID</TableCell>
                   <TableCell>Product name</TableCell>
                   <TableCell>Price</TableCell>
                   <TableCell>Discount(%)</TableCell>
@@ -104,11 +103,13 @@ export default function OrderList({ listOrder, loading }) {
                 {orders.map((item, index) => {
                   return (
                     <TableRow key={index}>
-                      <TableCell>#{index + 1}</TableCell>
                       <TableCell>
                         {item?.orderDetails.map((c, i) => {
                           return (
-                            <p style={{ margin: 2 }}>{c?.product?.name}</p>
+                            <p style={{ margin: 2 }}>
+                              {item?.orderDetails.length > 1 ? `${i+1}. ` : ""} 
+                              {c?.product?.name}
+                            </p>
                           );
                         })}
                       </TableCell>

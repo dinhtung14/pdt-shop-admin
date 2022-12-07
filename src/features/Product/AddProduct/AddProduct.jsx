@@ -86,6 +86,7 @@ export default function AddProduct() {
             formData.append("evaluation", data.evaluation);
             formData.append("description", data.description);
             formData.append("sold", data.sold);
+            formData.append("quantity", data.quantity);
             formData.append("price", data.price);
             formData.append("category", data.category);
             selectImage.forEach((item) => {
@@ -106,7 +107,6 @@ export default function AddProduct() {
             console.log("err", error);
             alert(error);
         }
-        
     }
     
     return (
