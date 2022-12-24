@@ -5,6 +5,8 @@ import sidebar_item from "../../assets/fakeData/sidebarData";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "@mui/icons-material";
 import { LOCAL_STORAGE } from "constants/gloabalUrl";
+import { useEffect } from "react";
+import authApi from "api/authApi";
 
 const SidebarItem = (props) => {
   const active = props.active ? "active" : "";
@@ -50,7 +52,16 @@ const SidebarItem = (props) => {
 
 export default function Sidebar(props) {
 	const { isOpen, toggle } = props;
+  const [user, setUser] = useState();
   const activeItem = sidebar_item.findIndex((value) => value.route === props.location.pathname);
+  
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await authApi.getInfo();
+      setUser(res?.user);
+    }
+    getUser();
+  }, [])
 
 	const handleClick = (sidebarItem) => {
     if (sidebarItem.displayName === "Logout") {
@@ -70,7 +81,7 @@ export default function Sidebar(props) {
       <div className="sidebar-logo">
         <img src={avatar} alt="" />
         <div className="sidebar-info">
-          <h2>Admin</h2>
+          <h2>{user?.username}</h2>
           <p>Manager</p>
         </div>
       </div>

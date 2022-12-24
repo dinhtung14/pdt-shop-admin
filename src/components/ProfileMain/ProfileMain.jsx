@@ -193,7 +193,7 @@ export default function ProfileMain() {
                 style={{ width: 300 }}
               />
               <InputField
-                name="phone"
+                name="phoneNumber"
                 label="Phone"
                 control={control}
                 style={{ width: 300 }}
