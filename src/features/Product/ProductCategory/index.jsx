@@ -136,7 +136,7 @@ function ProductCategory() {
                         className="product-cate__img"
                       />
                     </TableCell>
-                    <TableCell>{item.name}</TableCell>
+                    <TableCell sx={{ textTransform: "capitalize" }}>{item.name}</TableCell>
                     <TableCell>{item.price}</TableCell>
                     <TableCell>{item?.quantity ? item.quantity : 0}</TableCell>
                     <TableCell>{item.discount}</TableCell>

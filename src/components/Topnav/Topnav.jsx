@@ -53,7 +53,7 @@ export default function Topnav({ toggle }) {
     <div className="topnav">
       <div className="topnav-left">
         <h1>
-          <Link to="/">Sober Shop</Link>
+          <Link to="/">PDT Shop</Link>
         </h1>
         <div className="topnav-left__toggle" onClick={toggle}>
           <Menu />

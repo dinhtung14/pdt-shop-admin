@@ -1,3 +1,4 @@
+import OrderDetail from 'components/OrderList/OrderDetail'
 import Category from 'pages/Category'
 import Dashboard from 'pages/Dashboard'
 import Orders from 'pages/Orders'
@@ -12,7 +13,10 @@ function Routes() {
     return (
         <Switch>
             <Route path="/" exact component={Dashboard} />
-            <Route path="/products" component={Product} />
+            <Route path="/products" component={Product} /><Route
+                path="/orders/order-detail/:id"
+                component={OrderDetail}
+            />
             <Route path="/orders" component={Orders} />
             <Route path="/users" component={Users} />
             <Route path="/profile" component={Profile} />

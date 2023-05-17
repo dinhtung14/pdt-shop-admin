@@ -8,7 +8,11 @@ const orderApi = {
 	update: (id, data) => {
 		const url = `/order/admin/${id}`;
 		return axiosClient.patch(url, data);
-	}
+	},
+	getOrderDetail: (id) => {
+    const url = `/order/user/${id}`;
+    return axiosClient.get(url);
+  },
 }
 
 export default orderApi;
