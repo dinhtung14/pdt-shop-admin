@@ -20,7 +20,7 @@ const initialOrder = {
   id: "",
   note: "",
   status: 1,
-  statusPayment: 1,
+  paymentStatus: 1,
   payment_method: "",
   coupon: [],
   address: "",
@@ -97,10 +97,10 @@ export default function OrderDetail() {
         content = "Preparing goods";
         break;
       case "4":
-        content = "Successful delivery";
+        content = "Delivering";
         break;
       case "5":
-        content = "Delivering";
+        content = "Successful delivery";
         break;
       case "6":
         content = "Canceled";
@@ -191,7 +191,7 @@ export default function OrderDetail() {
               <div className="order-item__info">
                 <p>Payment status: </p>
                 <p>
-                  {order.statusPayment === Number(1) ? "Unpaid" : order.statusPayment === Number(2) ? "Paid" : ""}
+                  {order.paymentStatus === Number(1) ? "Unpaid" : order.paymentStatus === Number(2) ? "Paid" : ""}
                 </p>
               </div>
             </Box>

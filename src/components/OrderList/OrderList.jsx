@@ -75,10 +75,10 @@ export default function OrderList({ listOrder, loading }) {
         content = "Preparing goods";
         break;
       case "4":
-        content = "Successful delivery";
+        content = "Delivering";
         break;
       case "5":
-        content = "Delivering";
+        content = "Successful delivery";
         break;
       case "6":
         content = "Canceled";
@@ -149,14 +149,14 @@ export default function OrderList({ listOrder, loading }) {
     let orderItem;
     setOrders((prev) => {
       const prevValue = [...prev];
-      const newValue = { ...prevValue[index], statusPayment: value };
+      const newValue = { ...prevValue[index], paymentStatus: value };
       prevValue[index] = newValue;
       orderItem = newValue;
       return prevValue;
     });
     if (orderItem._id) {
       const res = await orderApi.update(orderItem._id, {
-        statusPayment: orderItem.statusPayment,
+        paymentStatus: orderItem.paymentStatus,
       });
       if (res) {
         alert("Update payment status successfully");
@@ -234,15 +234,15 @@ export default function OrderList({ listOrder, loading }) {
                           <EditForm
                             index={index}
                             name="statusPayment"
-                            value={item.statusPayment}
+                            value={item.paymentStatus}
                             setValue={handleChangeStatusPayment}
-                            status={getStatusPayment(item.statusPayment)}
+                            status={getStatusPayment(item.paymentStatus)}
                             options={ORDER_STATUS_PAYMENT}
                             styles={{
                               backgroundColor: getColorStatusPayment(
-                                item.statusPayment
+                                item.paymentStatus
                               ).bgcColor,
-                              color: getColorStatusPayment(item.statusPayment)
+                              color: getColorStatusPayment(item.paymentStatus)
                                 .color,
                               textAlign: "center",
                               borderRadius: 5,

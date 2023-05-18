@@ -17,7 +17,7 @@ export default function EditForm({
 	};
 	
 	const handleClick = () => {
-		if (value === "0" || value === "4") return;
+		if (value === "5" || value === "6") return;
 		setIsLabel(true);
 	}
 
